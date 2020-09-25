@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <module type="JAVA_MODULE" version="4">
+  <component name="CheckStyle-IDEA-Module">
+    <option name="configuration">
+      <map />
+    </option>
+  </component>
   <component name="NewModuleRootManager" inherit-compiler-output="true">
     <exclude-output />
     <content url="file://$MODULE_DIR$">
@@ -7,5 +12,12 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="derby" level="project" />
+    <orderEntry type="library" name="eclipselink2.7.7" level="project" />
+    <orderEntry type="library" name="javax.persistence-2.1.1-sources" level="project" />
+    <orderEntry type="library" name="javax.persistence_2.1.1.v201509150925" level="project" />
+    <orderEntry type="library" name="jcommon-1.0.21" level="project" />
+    <orderEntry type="library" name="jfreechart-1.0.17" level="project" />
+    <orderEntry type="library" name="org.eclipse.persistence.jpa.modelgen_2.6.4.v20160829-44060b6" level="project" />
   </component>
 </module>
