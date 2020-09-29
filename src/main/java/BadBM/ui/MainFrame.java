@@ -1,9 +1,9 @@
-package main.java.BadBM.ui;
+package BadBM.ui;
 
-import main.java.BadBM.Util;
-import main.java.BadBM.persist.DiskRun;
-import main.java.BadBM.persist.DiskRun.BlockSequence;
-import main.java.BadBM.App;
+import BadBM.Util;
+import BadBM.persist.DiskRun;
+import BadBM.persist.DiskRun.BlockSequence;
+import BadBM.App;
 
 import javax.swing.*;
 import javax.swing.text.DefaultCaret;
@@ -13,7 +13,7 @@ import java.text.DecimalFormat;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import static main.java.BadBM.App.dataDir;
+import static BadBM.App.dataDir;
 import static java.awt.Font.PLAIN;
 
 /**

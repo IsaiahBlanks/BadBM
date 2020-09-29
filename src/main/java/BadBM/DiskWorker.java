@@ -1,8 +1,8 @@
-package main.java.BadBM;
+package BadBM;
 
-import main.java.BadBM.persist.EM;
-import main.java.BadBM.persist.DiskRun;
-import main.java.BadBM.ui.Gui;
+import BadBM.persist.EM;
+import BadBM.persist.DiskRun;
+import BadBM.ui.Gui;
 
 import javax.persistence.EntityManager;
 import javax.swing.*;
@@ -15,9 +15,9 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import static main.java.BadBM.App.*;
-import static main.java.BadBM.DiskMark.MarkType.READ;
-import static main.java.BadBM.DiskMark.MarkType.WRITE;
+import static BadBM.App.*;
+import static BadBM.DiskMark.MarkType.READ;
+import static BadBM.DiskMark.MarkType.WRITE;
 
 /**
  * Run the disk benchmarking as a Swing-compliant thread (only one of these threads can run at

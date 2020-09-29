@@ -1,8 +1,8 @@
-package main.java.BadBM.ui;
+package BadBM.ui;
 
 
-import main.java.BadBM.App;
-import main.java.BadBM.DiskMark;
+import BadBM.App;
+import BadBM.DiskMark;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;

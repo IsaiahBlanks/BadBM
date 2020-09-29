@@ -29,9 +29,25 @@ dependencies {
 
     // Use JUnit Jupiter Engine for testing.
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.6.2'
+
+    // Charting api/runtime
+    api  group: 'org.jfree', name: 'jfreechart', version: '1.0.17'
+
+    // database/persistence
+    api group: 'javax.persistence', name: 'javax.persistence-api', version: '2.2'
+    implementation group: 'org.eclipse.persistence', name: 'org.eclipse.persistence.jpa.modelgen', version: '2.4.2'
+    implementation group: 'org.eclipse.persistence', name: 'eclipselink', version: '2.7.5'
+
+    // DBMS
+    implementation group: 'org.apache.derby', name: 'derby', version: '10.13.1.1'
 }
 
 test {
     // Use junit platform for unit tests
     useJUnitPlatform()
+}
+
+sourceSets  {
+    // MJC this may be needed to make entity classes visible to the persistence scanner
+    sourceSets.main.output.resourcesDir = sourceSets.main.java.outputDir
 }

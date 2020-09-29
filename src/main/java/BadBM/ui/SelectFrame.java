@@ -1,7 +1,7 @@
-package main.java.BadBM.ui;
+package BadBM.ui;
 
-import main.java.BadBM.App;
-import main.java.BadBM.ui.Gui;
+import BadBM.App;
+import BadBM.ui.Gui;
 
 import java.io.File;
 

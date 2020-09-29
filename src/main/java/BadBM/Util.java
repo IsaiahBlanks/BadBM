@@ -1,4 +1,4 @@
-package main.java.BadBM;
+package BadBM;
 
 import javax.swing.filechooser.FileSystemView;
 import java.io.*;

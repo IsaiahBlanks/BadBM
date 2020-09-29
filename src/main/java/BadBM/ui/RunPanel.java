@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package main.java.BadBM.ui;
+package BadBM.ui;
 
-import main.java.BadBM.persist.DiskRun;
+import BadBM.persist.DiskRun;
 
 import javax.swing.table.DefaultTableModel;
 import java.awt.event.ComponentAdapter;

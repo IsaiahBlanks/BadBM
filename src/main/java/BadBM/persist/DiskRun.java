@@ -1,4 +1,4 @@
-package main.java.BadBM.persist;
+package BadBM.persist;
 
 import javax.persistence.*;
 import java.io.Serializable;

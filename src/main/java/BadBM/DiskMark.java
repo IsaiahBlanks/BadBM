@@ -1,4 +1,4 @@
-package main.java.BadBM;
+package BadBM;
 
 import java.text.DecimalFormat;
 

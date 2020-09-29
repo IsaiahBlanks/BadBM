@@ -1,10 +1,10 @@
-package main.java.BadBM;
+package BadBM;
 
 
-import main.java.BadBM.ui.SelectFrame;
-import main.java.BadBM.persist.DiskRun;
-import main.java.BadBM.ui.Gui;
-import main.java.BadBM.ui.MainFrame;
+import BadBM.ui.SelectFrame;
+import BadBM.persist.DiskRun;
+import BadBM.ui.Gui;
+import BadBM.ui.MainFrame;
 
 import javax.swing.SwingWorker.StateValue;
 import javax.swing.*;
