@@ -1,6 +1,7 @@
 package BadBM;
 
 import BadBM.persist.DiskRun;
+import BadBM.ui.ConsoleProgram;
 import BadBM.ui.Gui;
 import BadBM.ui.MainFrame;
 import BadBM.ui.SelectFrame;
@@ -45,9 +46,11 @@ public class App {
     public static int numOfBlocks = 32;     // desired number of blocks
     public static int blockSizeKb = 512;    // size of a block in KBs
     public static DiskWorker worker = null;
+    public static ProgramInterface programInterface;
     public static int nextMarkNumber = 1;   // number of the next mark
     public static double wMax = -1, wMin = -1, wAvg = -1;
     public static double rMax = -1, rMin = -1, rAvg = -1;
+    public static boolean console = false;
 
     /**
      * @param args the command line arguments
@@ -225,7 +228,7 @@ public class App {
             msg("worker is null abort...");
             return;
         }
-        worker.cancel(true);
+       // worker.cancel(true);
     }
 
     public static void startBenchmark() {
@@ -266,27 +269,21 @@ public class App {
         }
 
         //7. start disk worker thread
-        worker = new DiskWorker();
-        worker.addPropertyChangeListener((final PropertyChangeEvent event) -> {
-            switch (event.getPropertyName()) {
-                case "progress":
-                    int value = (Integer) event.getNewValue();
-                    Gui.progressBar.setValue(value);
-                    long kbProcessed = (value) * App.targetTxSizeKb() / 100;
-                    Gui.progressBar.setString(kbProcessed + " / " + App.targetTxSizeKb());
-                    break;
-                case "state":
-                    switch ((StateValue) event.getNewValue()) {
-                        case STARTED:
-                            Gui.progressBar.setString("0 / " + App.targetTxSizeKb());
-                            break;
-                        case DONE:
-                            break;
-                    } // end inner switch
-                    break;
-            }
-        });
-        worker.execute();
+        if(console) {
+            programInterface = new ConsoleProgram();
+        } else {
+            programInterface = new SwingProgram();
+        }
+
+        programInterface.addListenerForProperties();
+        worker = new DiskWorker(programInterface);
+        try {
+            worker.doBenchmark();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        //programInterface.execute();
     }
 
     public static long targetMarkSizeKb() {
