@@ -1,1 +1,1 @@
-package main.java.BadBM.ui;
+package BadBM.ui;

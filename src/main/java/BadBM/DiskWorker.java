@@ -1,7 +1,7 @@
 package BadBM;
 
-import BadBM.persist.EM;
 import BadBM.persist.DiskRun;
+import BadBM.persist.EM;
 import BadBM.ui.Gui;
 
 import javax.persistence.EntityManager;
@@ -18,6 +18,10 @@ import java.util.logging.Logger;
 import static BadBM.App.*;
 import static BadBM.DiskMark.MarkType.READ;
 import static BadBM.DiskMark.MarkType.WRITE;
+
+
+
+=======
 
 /**
  * Run the disk benchmarking as a Swing-compliant thread (only one of these threads can run at
@@ -51,7 +55,7 @@ public class DiskWorker extends SwingWorker<Boolean, DiskMark> {
          */
         System.out.println("*** starting new worker thread");
         msg("Running readTest " + App.readTest + "   writeTest " + App.writeTest);
-        msg("num files: " + App.numOfMarks + ", num blks: " + numOfBlocks
+        msg("num files: " + App.numOfMarks + ", num blks: " + App.numOfBlocks
                 + ", blk size (kb): " + App.blockSizeKb + ", blockSequence: " + App.blockSequence);
 
         /**
@@ -88,7 +92,7 @@ public class DiskWorker extends SwingWorker<Boolean, DiskMark> {
         if (App.writeTest) {
             DiskRun run = new DiskRun(DiskRun.IOMode.WRITE, App.blockSequence);
             run.setNumMarks(App.numOfMarks);
-            run.setNumBlocks(numOfBlocks);
+            run.setNumBlocks(App.numOfBlocks);
             run.setBlockSize(App.blockSizeKb);
             run.setTxSize(App.targetTxSizeKb());
             run.setDiskInfo(Util.getDiskInfo(dataDir));
@@ -207,7 +211,7 @@ public class DiskWorker extends SwingWorker<Boolean, DiskMark> {
         if (App.readTest) {
             DiskRun run = new DiskRun(DiskRun.IOMode.READ, App.blockSequence);
             run.setNumMarks(App.numOfMarks);
-            run.setNumBlocks(numOfBlocks);
+            run.setNumBlocks(App.numOfBlocks);
             run.setBlockSize(App.blockSizeKb);
             run.setTxSize(App.targetTxSizeKb());
             run.setDiskInfo(Util.getDiskInfo(dataDir));

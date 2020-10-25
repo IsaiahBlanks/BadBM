@@ -1,0 +1,16 @@
+<component name="libraryTable">
+  <library name="libs">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/libs/derby.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libs/eclipselink2.7.7.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libs/javax.persistence_2.1.1.v201509150925.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libs/jcommon-1.0.21.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libs/jfreechart-1.0.17.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libs/org.eclipse.persistence.jpa.modelgen_2.6.4.v20160829-44060b6.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$PROJECT_DIR$/libs/javax.persistence-2.1.1-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

@@ -1,1 +1,2 @@
-package main.java.BadBM.persist;
+package BadBM.persist;
+

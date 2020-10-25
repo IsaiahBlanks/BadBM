@@ -1,6 +1,5 @@
 package BadBM.ui;
 
-
 import BadBM.App;
 import BadBM.DiskMark;
 import org.jfree.chart.ChartFactory;

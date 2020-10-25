@@ -1,9 +1,8 @@
 package BadBM.ui;
 
+import BadBM.App;
 import BadBM.Util;
 import BadBM.persist.DiskRun;
-import BadBM.persist.DiskRun.BlockSequence;
-import BadBM.App;
 
 import javax.swing.*;
 import javax.swing.text.DefaultCaret;
@@ -68,7 +67,7 @@ public final class MainFrame extends javax.swing.JFrame {
     private javax.swing.JComboBox numFilesCombo;
     private javax.swing.JButton openLocButton;
     private javax.swing.JMenu optionMenu;
-    private javax.swing.JComboBox<BlockSequence> orderComboBox;
+    private javax.swing.JComboBox<DiskRun.BlockSequence> orderComboBox;
     private javax.swing.JPanel progressPanel;
     private javax.swing.JLabel rAvgLabel;
     private javax.swing.JLabel rMaxLabel;
@@ -178,7 +177,7 @@ public final class MainFrame extends javax.swing.JFrame {
         jLabel12 = new javax.swing.JLabel();
         resetButton = new javax.swing.JButton();
         jLabel13 = new javax.swing.JLabel();
-        orderComboBox = new javax.swing.JComboBox<BlockSequence>();
+        orderComboBox = new javax.swing.JComboBox<DiskRun.BlockSequence>();
         jLabel14 = new javax.swing.JLabel();
         wMinLabel = new javax.swing.JLabel();
         wMaxLabel = new javax.swing.JLabel();
