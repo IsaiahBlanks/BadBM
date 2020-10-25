@@ -5,7 +5,6 @@
  */
 package BadBM.ui;
 
-
 import BadBM.persist.DiskRun;
 
 import javax.swing.table.DefaultTableModel;
