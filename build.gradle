@@ -42,19 +42,20 @@ dependencies {
     implementation group: 'org.apache.derby', name: 'derby', version: '10.13.1.1'
 }
 
+sourceSets  {
+    // MJC this may be needed to make entity classes visible to the persistence scanner
+    sourceSets.main.output.resourcesDir = sourceSets.main.java.outputDir
+}
+
 jar {
     manifest {
-        attributes 'Main-Class': 'BadBM.App',
-                   "Class-Path": configurations.runtime.collect { it.absolutePath }.join(" ")
+        attributes("Main-Class": 'BadBM.App')
     }
 }
+
 
 test {
     // Use junit platform for unit tests
     useJUnitPlatform()
 }
 
-sourceSets  {
-    // MJC this may be needed to make entity classes visible to the persistence scanner
-    sourceSets.main.output.resourcesDir = sourceSets.main.java.outputDir
-}

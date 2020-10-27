@@ -5,11 +5,15 @@ import BadBM.ui.Gui;
 import javax.swing.*;
 import java.beans.PropertyChangeEvent;
 import java.util.List;
+import java.util.Objects;
 
 import static BadBM.App.dataDir;
 import static BadBM.DiskMark.MarkType.WRITE;
 
 public class SwingProgram extends SwingWorker<Boolean, DiskMark> implements ProgramInterface {
+    DiskMark markToPublish = null;
+    Boolean running = false;
+
     @Override
     public void runBenchmark() {
 
@@ -18,11 +22,21 @@ public class SwingProgram extends SwingWorker<Boolean, DiskMark> implements Prog
 
     @Override
     protected Boolean doInBackground() throws Exception {
+
         Gui.updateLegend();
 
         if (App.autoReset) {
             App.resetTestData();
             Gui.resetTestData();
+        }
+
+        int progressTracker = 0;
+        while (running) {
+            if(progressTracker != getProgress()) {
+                if (Objects.nonNull(markToPublish))
+                    publish(markToPublish);
+            }
+            progressTracker = getProgress();
         }
 
         return null;
@@ -31,16 +45,6 @@ public class SwingProgram extends SwingWorker<Boolean, DiskMark> implements Prog
     @Override
     public void setProgressVal(int progress) {
         setProgress(progress);
-    }
-
-    @Override
-    public void publishMark(DiskMark mark) {
-        publish(mark);
-    }
-
-    @Override
-    public void finish() {
-
     }
 
     @Override
@@ -80,6 +84,16 @@ public class SwingProgram extends SwingWorker<Boolean, DiskMark> implements Prog
     public void setTitle(String title) {
         Gui.chartPanel.getChart().getTitle().setVisible(true);
         Gui.chartPanel.getChart().getTitle().setText(title);
+    }
+
+    @Override
+    public void setMark(DiskMark mark) {
+        markToPublish = mark;
+    }
+
+    @Override
+    public void setRunning(Boolean val) {
+        running = val;
     }
 
     @Override

@@ -18,15 +18,6 @@ public class ConsoleProgram implements ProgramInterface {
     }
 
     @Override
-    public void publishMark(DiskMark mark) {
-        System.out.println(mark);
-    }
-
-    @Override
-    public void finish() {
-    }
-
-    @Override
     public boolean isCancel() {
         return false;
     }
@@ -43,5 +34,15 @@ public class ConsoleProgram implements ProgramInterface {
     @Override
     public void setTitle(String title) {
         System.out.println("---- " + title + " ----");
+    }
+
+    @Override
+    public void setMark(DiskMark mark) {
+        System.out.println(mark);
+    }
+
+    @Override
+    public void setRunning(Boolean val) {
+
     }
 }

@@ -8,10 +8,6 @@ public interface ProgramInterface {
 
     void setProgressVal(int progress);
 
-    void publishMark(DiskMark mark);
-
-    void finish();
-
     boolean isCancel();
 
     void addListenerForProperties();
@@ -19,5 +15,9 @@ public interface ProgramInterface {
     void displayMessage(String msg, String title);
 
     void setTitle(String title);
+
+    void setMark(DiskMark mark);
+
+    void setRunning(Boolean val);
 
 }

@@ -11,11 +11,11 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.RandomAccessFile;
 import java.util.Date;
-import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import static BadBM.App.*;
+import static BadBM.App.programInterface;
 import static BadBM.DiskMark.MarkType.READ;
 import static BadBM.DiskMark.MarkType.WRITE;
 
@@ -44,18 +44,17 @@ public class DiskWorker /*extends SwingWorker<Boolean, DiskMark> */{
 
     public DiskWorker(ProgramInterface userInterface) {
         programInterface = userInterface;
-
+        programInterface.runBenchmark();
     }
 
-    public Boolean doBenchmark() throws IOException {
-        /**
-         * We 'got here' because: a) End-user clicked 'Start' on the benchmark UI,
-         * which triggered the start-benchmark event associated with the App::startBenchmark()
-         * method.  b) startBenchmark() then instantiated a DiskWorker, and called
-         * its (super class's) execute() method, causing Swing to eventually
-         * call this doInBackground() method.
-         */
-        //programInterface.runBenchmark();
+    public Boolean doBenchmark() throws IOException {/**
+     * We 'got here' because: a) End-user clicked 'Start' on the benchmark UI,
+     * which triggered the start-benchmark event associated with the App::startBenchmark()
+     * method.  b) startBenchmark() then instantiated a DiskWorker, and called
+     * its (super class's) execute() method, causing Swing to eventually
+     * call this doInBackground() method.
+     */
+        programInterface.setRunning(true);
         System.out.println("*** starting new worker thread");
         msg("Running readTest " + App.readTest + "   writeTest " + App.writeTest);
         msg("num files: " + App.numOfMarks + ", num blks: " + App.numOfBlocks
@@ -77,36 +76,17 @@ public class DiskWorker /*extends SwingWorker<Boolean, DiskMark> */{
                 blockArr[b] = (byte) 0xFF;
             }
         }
-
+        
         DiskMark wMark, rMark;  // declare vars that will point to objects used to pass progress to UI
-
-        /*
-        Gui.updateLegend();  // init chart legend info
-
-        if (App.autoReset) {
-            App.resetTestData();
-            Gui.resetTestData();
-        } */
 
         int startFileNum = App.nextMarkNumber;
 
         if (App.writeTest) {
-            DiskRun run = new DiskRun(DiskRun.IOMode.WRITE, App.blockSequence);
-            run.setNumMarks(App.numOfMarks);
-            run.setNumBlocks(App.numOfBlocks);
-            run.setBlockSize(App.blockSizeKb);
-            run.setTxSize(App.targetTxSizeKb());
-            run.setDiskInfo(Util.getDiskInfo(dataDir));
-
-            // Tell logger and GUI to display what we know so far about the Run
-            msg("disk info: (" + run.getDiskInfo() + ")");
+            DiskRun run = initializeRun(DiskRun.IOMode.WRITE);
 
             programInterface.setTitle(run.getDiskInfo());
 
-            // Create a test data file using the default file system and config-specified location
-            if (!App.multiFile) {
-                testFile = new File(dataDir.getAbsolutePath() + File.separator + "testdata.jdm");
-            }
+            createDataFile();
 
             /**
              * Begin an outer loop for specified duration (number of 'marks') of benchmark,
@@ -170,7 +150,7 @@ public class DiskWorker /*extends SwingWorker<Boolean, DiskMark> */{
                 /**
                  * Let the GUI know the interim result described by the current Mark
                  */
-                programInterface.publishMark(wMark);
+                programInterface.setMark(wMark);
 
                 // Keep track of statistics to be displayed and persisted after all Marks are done.
                 run.setRunMax(wMark.getCumMax());
@@ -208,14 +188,7 @@ public class DiskWorker /*extends SwingWorker<Boolean, DiskMark> */{
 
         // Same as above, just for Read operations instead of Writes.
         if (App.readTest) {
-            DiskRun run = new DiskRun(DiskRun.IOMode.READ, App.blockSequence);
-            run.setNumMarks(App.numOfMarks);
-            run.setNumBlocks(App.numOfBlocks);
-            run.setBlockSize(App.blockSizeKb);
-            run.setTxSize(App.targetTxSizeKb());
-            run.setDiskInfo(Util.getDiskInfo(dataDir));
-
-            msg("disk info: (" + run.getDiskInfo() + ")");
+            DiskRun run = initializeRun(DiskRun.IOMode.READ);
 
             Gui.chartPanel.getChart().getTitle().setVisible(true);
             Gui.chartPanel.getChart().getTitle().setText(run.getDiskInfo());
@@ -259,7 +232,7 @@ public class DiskWorker /*extends SwingWorker<Boolean, DiskMark> */{
                 msg("m:" + m + " READ IO is " + rMark.getBwMbSec() + " MB/s    "
                         + "(MBread " + mbRead + " in " + sec + " sec)");
                 App.updateMetrics(rMark);
-                programInterface.publishMark(rMark);
+                programInterface.setMark(rMark);
 
                 run.setRunMax(rMark.getCumMax());
                 run.setRunMin(rMark.getCumMin());
@@ -275,7 +248,32 @@ public class DiskWorker /*extends SwingWorker<Boolean, DiskMark> */{
             Gui.runPanel.addRun(run);
         }
         App.nextMarkNumber += App.numOfMarks;
+        programInterface.setRunning(false);
         return true;
+    }
+
+    private void createDataFile() {
+        // Create a test data file using the default file system and config-specified location
+        if (!App.multiFile) {
+            testFile = new File(dataDir.getAbsolutePath() + File.separator + "testdata.jdm");
+        }
+    }
+
+    private DiskRun initializeRun(DiskRun.IOMode write) {
+        DiskRun run = new DiskRun(write, App.blockSequence);
+        setRunConfig(run);
+
+        // Tell logger and GUI to display what we know so far about the Run
+        msg("disk info: (" + run.getDiskInfo() + ")");
+        return run;
+    }
+
+    private void setRunConfig(DiskRun run) {
+        run.setNumMarks(App.numOfMarks);
+        run.setNumBlocks(App.numOfBlocks);
+        run.setBlockSize(App.blockSizeKb);
+        run.setTxSize(App.targetTxSizeKb());
+        run.setDiskInfo(Util.getDiskInfo(dataDir));
     }
 
     /*
