@@ -59,3 +59,7 @@ test {
     useJUnitPlatform()
 }
 
+sourceSets  {
+    // MJC this may be needed to make entity classes visible to the persistence scanner
+    sourceSets.main.output.resourcesDir = sourceSets.main.java.outputDir
+}
