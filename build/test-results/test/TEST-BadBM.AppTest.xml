@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="BadBM.AppTest" tests="4" skipped="0" failures="0" errors="0" timestamp="2020-10-30T00:36:05" hostname="LAPTOP-N5PBOTOO" time="6.77">
+  <properties/>
+  <testcase name="getVersionFormatConformanceTest()" classname="BadBM.AppTest" time="0.036"/>
+  <testcase name="updateMetricsBoundaryTest()" classname="BadBM.AppTest" time="0.003"/>
+  <testcase name="benchmarkPerformanceWriteTest()" classname="BadBM.AppTest" time="6.727"/>
+  <testcase name="targetMarkSizeKbTest()" classname="BadBM.AppTest" time="0.002"/>
+  <system-out><![CDATA[0.4
+Config for Java Disk Mark 0.4
+readTest: true
+writeTest: true
+locationDir: C:\BadBM\Data
+multiFile: true
+autoRemoveData: false
+autoReset: true
+blockSequence: SEQUENTIAL
+showMaxMin: true
+numOfFiles: 50
+numOfBlocks: 256
+blockSizeKb: 128
+
+*** starting new worker thread
+os: Windows 10
+
+DiskModel                   DriveLetter
+---------                   -----------
+KINGSTON RBUSNS8154P3256GJ3 C:         
+model is: KINGSTON RBUSNS8154P3256GJ3 
+Mark(WRITE): 1 bwMbSec: 493.615 avg: 493.615
+Mark(WRITE): 2 bwMbSec: 425.179 avg: 459.397
+Mark(WRITE): 3 bwMbSec: 523.789 avg: 480.861
+Mark(WRITE): 4 bwMbSec: 450.869 avg: 473.363
+Mark(WRITE): 5 bwMbSec: 512.586 avg: 481.207
+Mark(WRITE): 6 bwMbSec: 417.672 avg: 470.618
+Mark(WRITE): 7 bwMbSec: 472.635 avg: 470.906
+Mark(WRITE): 8 bwMbSec: 444.138 avg: 467.56
+Mark(WRITE): 9 bwMbSec: 509.725 avg: 472.245
+Mark(WRITE): 10 bwMbSec: 439.534 avg: 468.974
+Mark(WRITE): 11 bwMbSec: 517.881 avg: 473.42
+Mark(WRITE): 12 bwMbSec: 435.544 avg: 470.264
+Mark(WRITE): 13 bwMbSec: 523.562 avg: 474.364
+Mark(WRITE): 14 bwMbSec: 457.075 avg: 473.129
+Mark(WRITE): 15 bwMbSec: 533.011 avg: 477.121
+Mark(WRITE): 16 bwMbSec: 455.723 avg: 475.783
+Mark(WRITE): 17 bwMbSec: 535.746 avg: 479.311
+Mark(WRITE): 18 bwMbSec: 456.362 avg: 478.036
+Mark(WRITE): 19 bwMbSec: 503.475 avg: 479.375
+Mark(WRITE): 20 bwMbSec: 456.576 avg: 478.235
+Mark(WRITE): 21 bwMbSec: 451.098 avg: 476.942
+Mark(WRITE): 22 bwMbSec: 411.651 avg: 473.975
+Mark(WRITE): 23 bwMbSec: 523.2 avg: 476.115
+Mark(WRITE): 24 bwMbSec: 450.617 avg: 475.053
+Mark(WRITE): 25 bwMbSec: 522.891 avg: 476.966
+Mark(WRITE): 26 bwMbSec: 453.74 avg: 476.073
+Mark(WRITE): 27 bwMbSec: 521.9 avg: 477.77
+Mark(WRITE): 28 bwMbSec: 455.499 avg: 476.975
+Mark(WRITE): 29 bwMbSec: 522.965 avg: 478.561
+Mark(WRITE): 30 bwMbSec: 458.349 avg: 477.887
+Mark(WRITE): 31 bwMbSec: 522.058 avg: 479.312
+Mark(WRITE): 32 bwMbSec: 441.504 avg: 478.13
+Mark(WRITE): 33 bwMbSec: 497.662 avg: 478.722
+Mark(WRITE): 34 bwMbSec: 434.914 avg: 477.434
+Mark(WRITE): 35 bwMbSec: 489.074 avg: 477.766
+Mark(WRITE): 36 bwMbSec: 415.222 avg: 476.029
+Mark(WRITE): 37 bwMbSec: 470.669 avg: 475.884
+Mark(WRITE): 38 bwMbSec: 453.915 avg: 475.306
+Mark(WRITE): 39 bwMbSec: 455.561 avg: 474.8
+Mark(WRITE): 40 bwMbSec: 527.845 avg: 476.126
+Mark(WRITE): 41 bwMbSec: 440.405 avg: 475.254
+Mark(WRITE): 42 bwMbSec: 515.018 avg: 476.201
+Mark(WRITE): 43 bwMbSec: 459.106 avg: 475.804
+Mark(WRITE): 44 bwMbSec: 522.038 avg: 476.854
+Mark(WRITE): 45 bwMbSec: 445.77 avg: 476.164
+Mark(WRITE): 46 bwMbSec: 500.009 avg: 476.682
+Mark(WRITE): 47 bwMbSec: 460.528 avg: 476.338
+Mark(WRITE): 48 bwMbSec: 512.035 avg: 477.082
+Mark(WRITE): 49 bwMbSec: 463.092 avg: 476.797
+Mark(WRITE): 50 bwMbSec: 493.233 avg: 477.125
+[EL Fine]: server: 2020-10-29 20:36:10.96--Thread(Thread[SwingWorker-pool-1-thread-1,5,main])--Configured server platform: org.eclipse.persistence.platform.server.NoServerPlatform
+[EL Config]: metadata: 2020-10-29 20:36:11.165--ServerSession(1678911073)--Thread(Thread[SwingWorker-pool-1-thread-1,5,main])--The access type for the persistent class [class BadBM.persist.DiskRun] is set to [FIELD].
+[EL Config]: metadata: 2020-10-29 20:36:11.19--ServerSession(1678911073)--Thread(Thread[SwingWorker-pool-1-thread-1,5,main])--The alias name for the entity class [class BadBM.persist.DiskRun] is being defaulted to: DiskRun.
+[EL Config]: metadata: 2020-10-29 20:36:11.208--ServerSession(1678911073)--Thread(Thread[SwingWorker-pool-1-thread-1,5,main])--The column name for element [ioMode] is being defaulted to: IOMODE.
+[EL Config]: metadata: 2020-10-29 20:36:11.212--ServerSession(1678911073)--Thread(Thread[SwingWorker-pool-1-thread-1,5,main])--The column name for element [numMarks] is being defaulted to: NUMMARKS.
+[EL Config]: metadata: 2020-10-29 20:36:11.213--ServerSession(1678911073)--Thread(Thread[SwingWorker-pool-1-thread-1,5,main])--The column name for element [runMin] is being defaulted to: RUNMIN.
+[EL Config]: metadata: 2020-10-29 20:36:11.213--ServerSession(1678911073)--Thread(Thread[SwingWorker-pool-1-thread-1,5,main])--The column name for element [runAvg] is being defaulted to: RUNAVG.
+[EL Config]: metadata: 2020-10-29 20:36:11.213--ServerSession(1678911073)--Thread(Thread[SwingWorker-pool-1-thread-1,5,main])--The column name for element [diskInfo] is being defaulted to: DISKINFO.
+[EL Config]: metadata: 2020-10-29 20:36:11.213--ServerSession(1678911073)--Thread(Thread[SwingWorker-pool-1-thread-1,5,main])--The column name for element [totalMarks] is being defaulted to: TOTALMARKS.
+[EL Config]: metadata: 2020-10-29 20:36:11.213--ServerSession(1678911073)--Thread(Thread[SwingWorker-pool-1-thread-1,5,main])--The column name for element [blockOrder] is being defaulted to: BLOCKORDER.
+[EL Config]: metadata: 2020-10-29 20:36:11.214--ServerSession(1678911073)--Thread(Thread[SwingWorker-pool-1-thread-1,5,main])--The column name for element [blockSize] is being defaulted to: BLOCKSIZE.
+[EL Config]: metadata: 2020-10-29 20:36:11.214--ServerSession(1678911073)--Thread(Thread[SwingWorker-pool-1-thread-1,5,main])--The column name for element [txSize] is being defaulted to: TXSIZE.
+[EL Config]: metadata: 2020-10-29 20:36:11.214--ServerSession(1678911073)--Thread(Thread[SwingWorker-pool-1-thread-1,5,main])--The column name for element [numBlocks] is being defaulted to: NUMBLOCKS.
+[EL Config]: metadata: 2020-10-29 20:36:11.214--ServerSession(1678911073)--Thread(Thread[SwingWorker-pool-1-thread-1,5,main])--The column name for element [runMax] is being defaulted to: RUNMAX.
+[EL Config]: metadata: 2020-10-29 20:36:11.215--ServerSession(1678911073)--Thread(Thread[SwingWorker-pool-1-thread-1,5,main])--The column name for element [startTime] is being defaulted to: STARTTIME.
+[EL Config]: metadata: 2020-10-29 20:36:11.216--ServerSession(1678911073)--Thread(Thread[SwingWorker-pool-1-thread-1,5,main])--The column name for element [id] is being defaulted to: ID.
+[EL Config]: metadata: 2020-10-29 20:36:11.217--ServerSession(1678911073)--Thread(Thread[SwingWorker-pool-1-thread-1,5,main])--The column name for element [endTime] is being defaulted to: ENDTIME.
+[EL Info]: 2020-10-29 20:36:11.392--ServerSession(1678911073)--Thread(Thread[SwingWorker-pool-1-thread-1,5,main])--EclipseLink, version: Eclipse Persistence Services - 2.7.5.v20191016-ea124dd158
+[EL Fine]: connection: 2020-10-29 20:36:11.932--Thread(Thread[SwingWorker-pool-1-thread-1,5,main])--Detected database platform: org.eclipse.persistence.platform.database.JavaDBPlatform
+[EL Config]: connection: 2020-10-29 20:36:11.944--ServerSession(1678911073)--Connection(668358706)--Thread(Thread[SwingWorker-pool-1-thread-1,5,main])--connecting(DatabaseLogin(
+	platform=>JavaDBPlatform
+	user name=> ""
+	datasource URL=> "jdbc:derby:derbyDB;create=true"
+))
+[EL Config]: connection: 2020-10-29 20:36:11.947--ServerSession(1678911073)--Connection(1665095083)--Thread(Thread[SwingWorker-pool-1-thread-1,5,main])--Connected: jdbc:derby:derbyDB
+	User: APP
+	Database: Apache Derby  Version: 10.13.1.1 - (1765088)
+	Driver: Apache Derby Embedded JDBC Driver  Version: 10.13.1.1 - (1765088)
+[EL Info]: connection: 2020-10-29 20:36:12.033--ServerSession(1678911073)--Thread(Thread[SwingWorker-pool-1-thread-1,5,main])--/file:/C:/PreDIPBadBM/BadBM/build/classes/java/main/_jDiskMarkPU login successful
+[EL Fine]: sql: 2020-10-29 20:36:12.366--ClientSession(828409221)--Connection(1665095083)--Thread(Thread[SwingWorker-pool-1-thread-1,5,main])--INSERT INTO DiskRun (BLOCKORDER, BLOCKSIZE, DISKINFO, ENDTIME, IOMODE, NUMBLOCKS, NUMMARKS, RUNAVG, RUNMAX, RUNMIN, STARTTIME, TOTALMARKS, TXSIZE) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+	bind => [0, 128, KINGSTON RBUSNS8154P3256GJ3 , 2020-10-29 20:36:10.594, 1, 256, 50, 477.1252365001061, 535.7459760454581, 411.651274768221, 2020-10-29 20:36:06.522, 0, 1638400]
+[EL Fine]: sql: 2020-10-29 20:36:12.418--ClientSession(828409221)--Connection(1665095083)--Thread(Thread[SwingWorker-pool-1-thread-1,5,main])--values IDENTITY_VAL_LOCAL()
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

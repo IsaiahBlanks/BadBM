@@ -106,8 +106,12 @@ public class DiskRun implements Serializable {
         setRunMin(min);
     }
 
+    /**
+     * Here I modified getMax so it will not return the same as getRunMax()
+     * @return
+     */
     public String getMax() {
-        return getRunMax() == -1 ? "- -" : DF.format(getRunMax());
+        return getRunMax() == -1 ? "- -" : DF.format(getRunMax() + 1);
     }
 
     public void setMax(double max) {

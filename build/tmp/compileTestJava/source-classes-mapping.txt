@@ -1,0 +1,6 @@
+BadBM/persist/DiskRunTest.java
+ BadBM.persist.DiskRunTest
+BadBM/AppTest.java
+ BadBM.AppTest
+BadBM/ConsoleTest.java
+ BadBM.ConsoleTest

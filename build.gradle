@@ -30,6 +30,8 @@ dependencies {
     // Use JUnit Jupiter Engine for testing.
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.6.2'
 
+    testCompile("org.junit.jupiter:junit-jupiter-params:5.7.0")
+
     // Charting api/runtime
     api  group: 'org.jfree', name: 'jfreechart', version: '1.0.17'
 
@@ -45,6 +47,7 @@ dependencies {
 test {
     // Use junit platform for unit tests
     useJUnitPlatform()
+
 }
 
 sourceSets  {
