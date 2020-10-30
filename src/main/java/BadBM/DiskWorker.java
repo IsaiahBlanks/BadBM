@@ -19,10 +19,6 @@ import static BadBM.App.*;
 import static BadBM.DiskMark.MarkType.READ;
 import static BadBM.DiskMark.MarkType.WRITE;
 
-
-
-=======
-
 /**
  * Run the disk benchmarking as a Swing-compliant thread (only one of these threads can run at
  * once.) Cooperates with Swing to provide and make use of interim and final progress and
