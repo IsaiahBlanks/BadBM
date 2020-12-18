@@ -16,7 +16,6 @@ public class SwingProgram extends SwingWorker<Boolean, DiskMark> implements Prog
 
     @Override
     public void runBenchmark() {
-
         execute();
     }
 
@@ -94,6 +93,15 @@ public class SwingProgram extends SwingWorker<Boolean, DiskMark> implements Prog
     @Override
     public void setRunning(Boolean val) {
         running = val;
+    }
+
+    @Override
+    public void setFinished(Boolean val) {
+    }
+
+    @Override
+    public boolean getFinished() {
+        return false;
     }
 
     @Override

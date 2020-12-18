@@ -20,4 +20,10 @@ public interface ProgramInterface {
 
     void setRunning(Boolean val);
 
+    void setFinished(Boolean val);
+
+    boolean getFinished();
+
+    int getProgress();
+
 }

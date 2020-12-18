@@ -1,15 +1,12 @@
 package BadBM;
 
 import BadBM.persist.DiskRun;
-import BadBM.ui.ConsoleProgram;
 import BadBM.ui.Gui;
 import BadBM.ui.MainFrame;
 import BadBM.ui.SelectFrame;
 
-import javax.swing.SwingWorker.StateValue;
 import javax.swing.*;
 import javax.swing.UIManager.LookAndFeelInfo;
-import java.beans.PropertyChangeEvent;
 import java.io.*;
 import java.util.Properties;
 import java.util.logging.Level;
@@ -51,6 +48,7 @@ public class App {
     public static double wMax = -1, wMin = -1, wAvg = -1;
     public static double rMax = -1, rMin = -1, rAvg = -1;
     public static boolean console = false;
+    public static boolean benchmarkStarted = false;
 
     /**
      * @param args the command line arguments
@@ -277,13 +275,9 @@ public class App {
 
         programInterface.addListenerForProperties();
         worker = new DiskWorker(programInterface);
-        try {
-            worker.doBenchmark();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        worker.start();
+        benchmarkStarted = true;
 
-        //programInterface.execute();
     }
 
     public static long targetMarkSizeKb() {

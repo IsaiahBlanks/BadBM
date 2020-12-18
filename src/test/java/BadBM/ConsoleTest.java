@@ -1,16 +1,19 @@
 package BadBM;
 
-import BadBM.ui.ConsoleProgram;
 import BadBM.ui.Gui;
 import BadBM.ui.MainFrame;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.io.File;
 import java.io.IOException;
 import java.util.Properties;
+import java.util.concurrent.CountDownLatch;
+import java.util.concurrent.TimeUnit;
+
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class ConsoleTest {
+    private final CountDownLatch waiter = new CountDownLatch(1);
 
     /**
      * Bruteforce setup of static classes/fields to allow DiskWorker to run.
@@ -49,11 +52,21 @@ public class ConsoleTest {
     }
 
     @Test
-    public void consoleTest() throws IOException {
+    public void consoleTest() throws IOException, InterruptedException {
         setupDefaultAsPerProperties();
-        ProgramInterface programInterface = new ConsoleProgram();
-        DiskWorker worker = new DiskWorker(programInterface);
-        Assertions.assertTrue(worker.doBenchmark());
 
+        App.startBenchmark();
+
+        //wait for App.programInterface to be initialized
+        while (!App.benchmarkStarted) {
+            waiter.await(10, TimeUnit.MILLISECONDS);
+        }
+
+        //wait for the benchmark to finish
+        while (!App.programInterface.getFinished()) {
+            waiter.await(10, TimeUnit.MILLISECONDS);
+        }
+
+        assertTrue(App.programInterface.getProgress() >= 100);
     }
 }
