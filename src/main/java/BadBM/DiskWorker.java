@@ -5,7 +5,6 @@ import BadBM.persist.EM;
 import BadBM.ui.Gui;
 
 import javax.persistence.EntityManager;
-import javax.swing.*;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -15,29 +14,23 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import static BadBM.App.*;
-import static BadBM.App.programInterface;
 import static BadBM.DiskMark.MarkType.READ;
 import static BadBM.DiskMark.MarkType.WRITE;
 
 /**
- * Run the disk benchmarking as a Swing-compliant thread (only one of these threads can run at
- * once.) Cooperates with Swing to provide and make use of interim and final progress and
- * information, which is also recorded as needed to the persistence store, and log.
+ * Run the disk benchmark. Updates the ProgramInterface Object to allow either GUI or console to show run data
  * <p>
  * Depends on static values that describe the benchmark to be done having been set in App and Gui classes.
  * The DiskRun class is used to keep track of and persist info about each benchmark at a higher level (a run),
- * while the DiskMark class described each iteration's result, which is displayed by the UI as the benchmark run
+ * while the DiskMark class describes each iteration's result, which is displayed by the UI as the benchmark run
  * progresses.
  * <p>
  * This class only knows how to do 'read' or 'write' disk benchmarks. It is instantiated by the
  * startBenchmark() method.
  * <p>
- * To be Swing compliant this class extends SwingWorker and declares that its final return (when
- * doInBackground() is finished) is of type Boolean, and declares that intermediate results are communicated to
- * Swing using an instance of the DiskMark class.
  */
 
-public class DiskWorker extends Thread /*extends SwingWorker<Boolean, DiskMark> */{
+public class DiskWorker extends Thread {
 
     private ProgramInterface programInterface;
 
@@ -55,14 +48,13 @@ public class DiskWorker extends Thread /*extends SwingWorker<Boolean, DiskMark> 
         }
     }
 
-    public Boolean doBenchmark() throws IOException {
-        /**
-     * We 'got here' because: a) End-user clicked 'Start' on the benchmark UI,
-     * which triggered the start-benchmark event associated with the App::startBenchmark()
-     * method.  b) startBenchmark() then instantiated a DiskWorker, and called
-     * its (super class's) execute() method, causing Swing to eventually
-     * call this doInBackground() method.
+    /**
+     * This is the method that runs the essential disk benchmark. It runs in its own thread. It is run by calling
+     * worker.start() from the startBenchmark() method in App(). It feeds progress and results data to a
+     * ProgramInterface object.
      */
+    public Boolean doBenchmark() throws IOException {
+
         programInterface.setRunning(true);
         System.out.println("*** starting new worker thread");
         msg("Running readTest " + App.readTest + "   writeTest " + App.writeTest);
@@ -257,10 +249,8 @@ public class DiskWorker extends Thread /*extends SwingWorker<Boolean, DiskMark> 
             Gui.runPanel.addRun(run);
         }
         App.nextMarkNumber += App.numOfMarks;
-        //System.out.println("Debug Run: " + programInterface.getProgress() + "%");
         programInterface.setRunning(false);
         programInterface.setFinished(true); //needed for console test
-        //System.out.println("we did indeed set finished");
         return true;
     }
 

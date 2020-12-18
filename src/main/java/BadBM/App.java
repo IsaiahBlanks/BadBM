@@ -1,7 +1,6 @@
 package BadBM;
 
 import BadBM.persist.DiskRun;
-import BadBM.ui.ConsoleProgram;
 import BadBM.ui.Gui;
 import BadBM.ui.MainFrame;
 import BadBM.ui.SelectFrame;
@@ -279,7 +278,6 @@ public class App {
         worker.start();
         benchmarkStarted = true;
 
-        //programInterface.execute();
     }
 
     public static long targetMarkSizeKb() {
