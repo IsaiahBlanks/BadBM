@@ -37,7 +37,7 @@ import static BadBM.DiskMark.MarkType.WRITE;
  * Swing using an instance of the DiskMark class.
  */
 
-public class DiskWorker /*extends SwingWorker<Boolean, DiskMark> */{
+public class DiskWorker extends Thread /*extends SwingWorker<Boolean, DiskMark> */{
 
     private ProgramInterface programInterface;
 
@@ -46,7 +46,17 @@ public class DiskWorker /*extends SwingWorker<Boolean, DiskMark> */{
         programInterface.runBenchmark();
     }
 
-    public Boolean doBenchmark() throws IOException {/**
+    @Override
+    public void run() {
+        try {
+            doBenchmark();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public Boolean doBenchmark() throws IOException {
+        /**
      * We 'got here' because: a) End-user clicked 'Start' on the benchmark UI,
      * which triggered the start-benchmark event associated with the App::startBenchmark()
      * method.  b) startBenchmark() then instantiated a DiskWorker, and called
@@ -247,7 +257,10 @@ public class DiskWorker /*extends SwingWorker<Boolean, DiskMark> */{
             Gui.runPanel.addRun(run);
         }
         App.nextMarkNumber += App.numOfMarks;
+        //System.out.println("Debug Run: " + programInterface.getProgress() + "%");
         programInterface.setRunning(false);
+        programInterface.setFinished(true); //needed for console test
+        //System.out.println("we did indeed set finished");
         return true;
     }
 

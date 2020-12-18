@@ -97,6 +97,15 @@ public class SwingProgram extends SwingWorker<Boolean, DiskMark> implements Prog
     }
 
     @Override
+    public void setFinished(Boolean val) {
+    }
+
+    @Override
+    public boolean getFinished() {
+        return false;
+    }
+
+    @Override
     protected void process(List<DiskMark> markList) {
         /**
          * We are passed a list of one or more DiskMark objects that our thread has previously

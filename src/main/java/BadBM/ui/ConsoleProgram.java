@@ -5,6 +5,7 @@ import BadBM.ProgramInterface;
 
 public class ConsoleProgram implements ProgramInterface {
     int progress = 0;
+    boolean finished = false;
     @Override
     public void runBenchmark() {
     }
@@ -43,6 +44,20 @@ public class ConsoleProgram implements ProgramInterface {
 
     @Override
     public void setRunning(Boolean val) {
+    }
 
+    @Override
+    public void setFinished(Boolean val) {
+        finished = val;
+    }
+
+    @Override
+    public boolean getFinished() {
+        return finished;
+    }
+
+    @Override
+    public int getProgress() {
+        return progress;
     }
 }
